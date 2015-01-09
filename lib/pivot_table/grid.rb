@@ -93,8 +93,8 @@ module PivotTable
       }
     end
 
-    def to_json
-      to_hash.to_json
+    def to_json(opts={})
+      to_hash.to_json(opts)
     end
 
     private
