@@ -84,6 +84,19 @@ module PivotTable
       @data_grid
     end
 
+    def to_hash
+      {
+        column_name: @column_name,
+        row_name:    @row_name,
+        value_name:  @value_name,
+        source_data: @source_data.map(&:to_h)
+      }
+    end
+
+    def to_json
+      to_hash.to_json
+    end
+
     private
 
     def headers(method)

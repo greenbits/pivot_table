@@ -2,7 +2,6 @@ require 'spec_helper'
 
 module PivotTable
   describe Grid do
-
     context 'accessors' do
       it { is_expected.to respond_to :source_data }
       it { is_expected.to respond_to :row_name }
@@ -89,6 +88,23 @@ module PivotTable
       it_behaves_like 'a collection of columns'
       it_behaves_like 'a collection of rows'
       it_behaves_like 'a data grid'
+    end
+
+    context 'to_json' do
+      let(:config) { { :sort => false } }
+      let(:data) { unsorted_data }
+      let(:expected_hash) do
+        {
+          column_name: 'column_name',
+          row_name:    'row_name',
+          value_name:  'id',
+          source_data: data.map { |d| d.to_h }
+        }
+      end
+
+      it 'should product the correct json' do
+        expect(instance.to_json).to eq(expected_hash.to_json)
+      end
     end
   end
 end

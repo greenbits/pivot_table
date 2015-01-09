@@ -1,5 +1,6 @@
 $: << File.dirname(__FILE__)
 
+require 'json'
 require 'pivot_table/configuration'
 require 'pivot_table/grid'
 require 'pivot_table/cell_collection'
